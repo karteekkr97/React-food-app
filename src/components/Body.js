@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 // ** Body (main container) component **
 const Body = () => {
@@ -32,16 +33,22 @@ const Body = () => {
     );
   };
 
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false)
+    return (
+      <h1>Looks like you're offline!! Please check your internet connection</h1>
+    );
   // using conditional rendering (? :)
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="body mt-5">
+      <div className="filter pl-3">
         {/* search area */}
         <input
           type="text"
-          className="search-box"
+          className=" border-2 border-solid px-4 py-1"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value); // reRender each time a letter/key press in input
@@ -49,7 +56,7 @@ const Body = () => {
         />
 
         <button
-          className="search-btn"
+          className="search-btn ml-2 bg-green-500 px-2 rounded-md"
           onClick={() => {
             const filterRestaurant = listOfRestaurants.filter(
               // convert both data first in lowercase
@@ -65,7 +72,7 @@ const Body = () => {
 
         {/* filter area */}
         <button
-          className="filter-btn"
+          className="filter-btn border-solid border ml-2 bg-yellow-400 px-2 rounded-md"
           onClick={() => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.info.avgRating > 4
@@ -77,13 +84,13 @@ const Body = () => {
           Top rated restaurant
         </button>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap mt-4 justify-center gap-3">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <RestaurantCard resData={restaurant} />
+              <RestaurantCard resData={restaurant} />
           </Link>
         ))}
       </div>
