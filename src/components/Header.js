@@ -11,7 +11,7 @@ const Header = () => {
   const cartItems=useSelector((store)=>store.cart.items);
 
   return (
-    <div className="header flex shadow-lg items-center justify-between bg-slate-200 sticky right-0 left-0 top-0">
+    <div className="header z-50 flex shadow-lg items-center justify-between bg-slate-200 sticky right-0 left-0 top-0">
       <div className="logo-container">
         <img className="w-[100px]" src={LOGO_URL} alt="logo" />
       </div>
