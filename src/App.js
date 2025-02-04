@@ -9,6 +9,9 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import Profile from "./components/Profile";
 
 const AppComponent = () => {
   return (
@@ -59,6 +62,18 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+      path: "/profile",
+      element: <Profile />,
+    },
     ],
     errorElement: <Error />,
   },

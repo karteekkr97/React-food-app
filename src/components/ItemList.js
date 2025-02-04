@@ -3,39 +3,47 @@ import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
-  const handleAddItems=(item)=>{
-    dispatch(addItem(item))
-  }
+  const handleAddItems = (item) => {
+    dispatch(addItem(item));
+  };
+
   return (
-    <div>
+    <div className="max-w-4xl mx-auto p-4">
       {items.map((item) => (
         <div
           key={item?.card?.info?.id}
-          className="p-2 m-2 border-gray-200 border-b-2 text-left flex justify-between"
+          className="flex flex-col md:flex-row items-center bg-white p-4 shadow-md rounded-lg border border-gray-200 hover:shadow-lg transition-all mb-4"
         >
-          <div className="w-9/12">
-            <div className="py-2">
-              <span>{item?.card?.info?.name}</span>
+          {/* Item Image */}
+          <img
+            className="w-32 h-32 object-cover rounded-lg md:mr-6"
+            src={CDN_URL + item?.card?.info?.imageId}
+            alt={item?.card?.info?.name}
+          />
 
-              <span>
-                - ₹
-                {item?.card?.info?.price
-                  ? item?.card?.info?.price / 100
-                  : item?.card?.info?.defaultPrice / 100}
-              </span>
-            </div>
-            <p className="text-xs">{item?.card?.info?.description}</p>
+          {/* Item Details */}
+          <div className="flex-1 text-left">
+            <h3 className="text-lg font-semibold text-gray-800">
+              {item?.card?.info?.name}
+            </h3>
+            <p className="text-gray-600 text-sm mt-1">{item?.card?.info?.description}</p>
+            <p className="text-gray-900 font-bold mt-2 text-lg">
+              ₹
+              {item?.card?.info?.price
+                ? item?.card?.info?.price / 100
+                : item?.card?.info?.defaultPrice / 100}
+            </p>
           </div>
-          <div className="w-3/12 p-4">
-            <div className="absolute">
-              <button className="p-2 shadow-lg mx-8 rounded-lg text-white bg-black" onClick={()=>handleAddItems(item)}>
-                Add +
-              </button>
-            </div>
-            <img src={CDN_URL + item?.card?.info?.imageId} />
-          </div>
+
+          {/* Add to Cart Button */}
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg transition-all hover:scale-105"
+            onClick={() => handleAddItems(item)}
+          >
+            Add +
+          </button>
         </div>
       ))}
     </div>
