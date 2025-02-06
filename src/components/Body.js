@@ -15,7 +15,12 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const apiUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api/restaurants/list";
+      const apiUrl =
+      process.env.REACT_APP_API_BASE_URL ||
+      (window.location.hostname === "localhost"
+        ? "http://localhost:5000/api/restaurants/list"
+        : "/.netlify/functions/proxyRestaurants");
+
 
       const response = await fetch(apiUrl);
       if (!response.ok) {
