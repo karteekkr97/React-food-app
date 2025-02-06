@@ -3,7 +3,11 @@ import cors from "cors";
 import fetch from "node-fetch"; // Make sure to install `node-fetch`
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: 'GET,POST', // Allow specific methods
+    allowedHeaders: 'Content-Type, Authorization' // Allow necessary headers
+  }));
 
 // Proxy for restaurant list
 app.get("/api/restaurants/list", async (req, res) => {
@@ -12,7 +16,7 @@ app.get("/api/restaurants/list", async (req, res) => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
     const response = await fetch(swiggyURL, {
-      headers: { "User-Agent": "Mozilla/5.0" },
+      headers: { "Content-Type": "application/json","User-Agent": "Mozilla/5.0" },
     });
 
     if (!response.ok) throw new Error(`Swiggy API error: ${response.status}`);
@@ -36,7 +40,7 @@ app.get("/api/menu", async (req, res) => {
     const menuURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.99740&lng=79.00110&restaurantId=${restaurantId}`;
 
     const response = await fetch(menuURL, {
-      headers: { "User-Agent": "Mozilla/5.0" },
+      headers: { "Content-Type": "application/json","User-Agent": "Mozilla/5.0" },
     });
 
     if (!response.ok) throw new Error(`Swiggy API error: ${response.status}`);
