@@ -15,7 +15,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "http://localhost:5000/api/restaurants/list"
+      "/api/restaurants/list"
     );
 
     const json = await data.json();
