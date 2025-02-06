@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'; // If you're using type module, make sure you use "import" syntax
+import { fetch } from 'undici'; // If you're using type module, make sure you use "import" syntax
 
 export async function handler(event, context) {
   try {
