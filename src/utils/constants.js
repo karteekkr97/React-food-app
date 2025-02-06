@@ -2,4 +2,4 @@ export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_l
 
 export const LOGO_URL = "https://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png";
 
-export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9183341&lng=77.60633039999999&restaurantId=";
+export const MENU_API = "http://localhost:5000/api/menu?restaurantId=";
