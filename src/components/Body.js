@@ -14,17 +14,24 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "http://localhost:5000/api/restaurants/list"
-    );
+    try {
+      const apiUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:5000/api/restaurants/list";
 
-    const json = await data.json();
-    setListOfRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-    );
-    setFilteredRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
-    );
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      setListOfRestaurants(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+      );
+      setFilteredRestaurants(
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants || []
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const onlineStatus = useOnlineStatus();
