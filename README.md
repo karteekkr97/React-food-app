@@ -24,4 +24,14 @@ npm install
 npm start
 Make sure you've enabled CORS extension installed in your browser while fetching Swiggy Live API
 
+App Url - https://karteek-swiggy.netlify.app/
+
 Drop ⭐ if you like the Repository
+
+![Swiggy-App-02-07-2025_02_01_PM](https://github.com/user-attachments/assets/41c9f329-6e32-457a-b24b-344d8a59e1e3)
+
+![Swiggy-App-02-07-2025_02_02_PM](https://github.com/user-attachments/assets/00ea1228-e4a0-431e-a9c2-1eade4a21c60)
+
+![Swiggy-App-02-07-2025_02_02_PM (1)](https://github.com/user-attachments/assets/d78b5b49-a633-4c53-9320-ebdcefd009a0)
+
+
