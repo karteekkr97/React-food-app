@@ -23,12 +23,12 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-80"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
       >
-        <h2 className="text-xl font-semibold mb-4">Login</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center">Login</h2>
         
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 

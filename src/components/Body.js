@@ -8,6 +8,7 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [loading, setLoading] = useState(true); // Added a loading state
 
   useEffect(() => {
     fetchData();
@@ -15,34 +16,31 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
+      setLoading(true); // Start loading
       const data = await fetch(
-        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING");
-
+        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
+      );
       const json = await data.json();
 
-
-      // was showing an error of data fatching because sometime data coming from cards[1] sometime cards[2] and different on other times so me make a function and check which value of i gives data in cards[i]
       async function checkJsonData(jsonData) {
-
         for (let i = 0; i < jsonData?.data?.cards.length; i++) {
+          let checkData =
+            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
+              ?.restaurants;
 
-          // initialize checkData for Swiggy Restaurant data
-          let checkData = json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-          // if checkData is not undefined then return it
           if (checkData !== undefined) {
             return checkData;
           }
         }
       }
-      // call the checkJsonData() function which return Swiggy Restaurant data
-      const resData = await checkJsonData(json);
 
-      // update the state variable restaurants with Swiggy API data
+      const resData = await checkJsonData(json);
       setListOfRestaurants(resData);
       setFilteredRestaurants(resData);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -56,9 +54,12 @@ const Body = () => {
     );
   }
 
-  return listOfRestaurants.length === 0 ? (
-    <Shimmer />
-  ) : (
+  // Show Shimmer when loading
+  if (loading) {
+    return <Shimmer />;
+  }
+
+  return (
     <div className="body mt-5 px-4">
       {/* Filter Section */}
       <div className="filter flex flex-col sm:flex-row items-center gap-3 justify-center">
