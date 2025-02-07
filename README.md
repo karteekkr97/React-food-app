@@ -1,48 +1,27 @@
+🙏Food-Ordering-App🔥
+A Frontend food delivery application made using React and Swiggy's Live API.🚀 This project is made during the Namaste React Course Akshay Saini👩‍💻
 
-# Parcel
-- Dev Build
-- Local server
-- HMR- Hot Module Replacement
-- File watching Algorithm - written in C++
-- Caching - Faster Builds
-- Image Optimization
-- Minification
-- Compress
-- Bundling
-- Consistent Hashing
-- Code Splitting
-- Differential Bundling - support older browsers
-- Diagnostics
-- Error Handling
-- HTTPs
-- Tree Shaking - Remove unused  code
-- Different dev and prod bundles
- 
-# 2 types of Routing in web apps
-- Client side routing
-- Server side routing
+Tech Stack :-
+Frontend Library: React JS
+Bundler: Parcel
+Styling: Tailwind CSS
+Testing: Jest
+State Management: Redux-toolkit
+Features:-
+Shimmer UI
+Add to cart
+Get restaurants by current location from Swiggy API & getting the live data.
+Display them with Area name, Cuisines Category and Ratings.
+Search Restaurants by Name.
+For any restaurant, you can checkout all the different type of dishes available with details and prices per quantity.
+Filter Top Rated Restuarants.
+How to run on your local
+1. Clone the repo
+git clone https://github.com/karteekkr97/React-food-app.git
+2. Install dependencies
+npm install
+3. Start the dev server
+npm start
+Make sure you've enabled CORS extension installed in your browser while fetching Swiggy Live API
 
-# Redux Toolkit
-- Install @reduxjs/toolkit and react-redux
-- Build our store
-- Connect our store to our app
-- Slice (Cart slice)
-- Dispatch(action)
-- Selector
-
-# Types of testing (developer)
-- Unit Testing
-- Integration Testing
-- End to End Testing - e2e testing
-
-# Setting up testing in our app
-- Install React testing library
-- install jest
-- Install Babel Dependencies
-- Configure Babel
-- Config Parcel config file to disable default babel transpilation
-- Jest Configuration- npx jest --init
-- Install jsdom library
-- Install @babel/preset-react- to make JSX work in test cases
-- Include @babel/preset-react - inside my babel config
-- Install @testing-library/jest-dom
+Drop ⭐ if you like the Repository
