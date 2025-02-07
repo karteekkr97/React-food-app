@@ -22,6 +22,7 @@ git clone https://github.com/karteekkr97/React-food-app.git
 npm install
 3. Start the dev server
 npm start
+
 Make sure you've enabled CORS extension installed in your browser while fetching Swiggy Live API
 
 App Url - https://karteek-swiggy.netlify.app/
