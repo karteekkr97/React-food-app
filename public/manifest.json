@@ -1,6 +1,6 @@
 {
-    "name": "Namaste React",
-    "short_name": "Namaste",
+    "name": "Food App",
+    "short_name": "FoodApp",
     "icons": [
       {
         "src": "logo-192.png",
