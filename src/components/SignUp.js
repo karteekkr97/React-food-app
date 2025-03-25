@@ -6,26 +6,33 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSignup = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
-    if (username.trim() !== "" && password.trim() !== "") {
-      localStorage.setItem("user", JSON.stringify({ username, password }));
-      alert("Signup Successful! Redirecting to login...");
-      navigate("/login"); // Redirect to login page after signup
+
+    // Check if user already exists
+    const existingUser = JSON.parse(localStorage.getItem("user"));
+    if (existingUser?.username === username) {
+      alert("User already exists. Please log in.");
+      return;
     }
+
+    // Save user credentials
+    const newUser = { username, password };
+    localStorage.setItem("user", JSON.stringify(newUser));
+    navigate("/login"); // Redirect to login
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
-        onSubmit={handleSignup}
+        onSubmit={handleSignUp}
         className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
       >
         <h2 className="text-xl font-semibold mb-4 text-center">Sign Up</h2>
         
         <input
           type="text"
-          placeholder="Enter your name"
+          placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded mb-4"

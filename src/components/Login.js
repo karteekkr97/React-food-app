@@ -1,37 +1,37 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logIn } from "../utils/authSlice";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    setError(""); // Clear previous errors
 
-    // Simulated user credentials stored in local storage
+    // Retrieve user from localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
-    if (storedUser && storedUser.username === username && storedUser.password === password) {
-      localStorage.setItem("loggedInUser", username); // Store logged-in user
+    if (storedUser && username === storedUser.username && password === storedUser.password) {
+      dispatch(logIn(storedUser)); // Store user in Redux
+      localStorage.setItem("user", JSON.stringify(storedUser)); // Persist user
       navigate("/"); // Redirect to home
     } else {
-      setError("Invalid username or password");
+      alert("Invalid username or password");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
         className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full"
       >
         <h2 className="text-xl font-semibold mb-4 text-center">Login</h2>
         
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-
         <input
           type="text"
           placeholder="Enter your username"
@@ -52,15 +52,8 @@ const Login = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
         >
-          Submit
+          Login
         </button>
-        
-        <p className="text-center mt-4">
-          Don't have an account?{" "}
-          <Link to="/signup" className="text-blue-500 hover:underline">
-            Sign Up
-          </Link>
-        </p>
       </form>
     </div>
   );
