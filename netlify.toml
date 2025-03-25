@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/manifest.json"
+  to = "/dist/manifest.json"
+  status = 200
+
+[[redirects]]
+  from = "/logo-192.png"
+  to = "/dist/logo-192.png"
+  status = 200
+
+[[redirects]]
+  from = "/logo-256.png"
+  to = "/dist/logo-256.png"
+  status = 200
