@@ -1,0 +1,7 @@
+{
+    "staticFiles": {
+      "staticPath": "public",
+      "staticOutDir": "dist"
+    }
+  }
+  

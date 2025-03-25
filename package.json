@@ -30,6 +30,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "parcel": "^2.12.0",
+    "parcel-reporter-static-files-copy": "^1.5.3",
     "postcss": "^8.4.38",
     "process": "^0.11.10",
     "tailwindcss": "^3.4.3"
@@ -40,7 +41,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "start": "parcel serve index.html",
-    "build": "parcel build index.html --public-url ./",
+    "build": "parcel build index.html --public-url ./ && cp public/manifest.json dist/ && cp public/logo-*.jpg dist/",
     "test": "jest",
     "source": "public/index.html",
     "targets": {
