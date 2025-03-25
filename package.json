@@ -41,7 +41,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "start": "parcel serve index.html",
-    "build": "parcel build index.html --public-url ./ && cp public/manifest.json dist/ && cp public/logo-*.jpg dist/",
+    "build": "parcel build index.html --public-url ./ && copy public\\manifest.json dist\\ && copy public\\logo-*.jpg dist\\",
     "test": "jest",
     "source": "public/index.html",
     "targets": {
