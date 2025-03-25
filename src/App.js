@@ -4,6 +4,11 @@ import { Provider, useDispatch } from "react-redux";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import appStore from "./utils/appStore";
 import { logIn } from "./utils/authSlice";
+navigator.serviceWorker.register(
+  new URL("../public/service-worker.js", import.meta.url)
+);
+
+import registerServiceWorker from "./serviceWorkerRegistration";
 
 // Import Components
 import Header from "./components/Header";
@@ -23,6 +28,17 @@ const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppComponent = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    if ("Notification" in window) {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          console.log("Notifications allowed!");
+        } else {
+          console.log("Notifications blocked.");
+        }
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -82,3 +98,6 @@ root.render(
     <RouterProvider router={appRouter} />
   </Provider>
 );
+
+// Register the service worker
+registerServiceWorker();
