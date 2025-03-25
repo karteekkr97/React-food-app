@@ -35,4 +35,7 @@ Drop ⭐ if you like the Repository
 
 ![Swiggy-App-02-07-2025_02_02_PM (1)](https://github.com/user-attachments/assets/d78b5b49-a633-4c53-9320-ebdcefd009a0)
 
+![Swiggy-App-03-25-2025_06_01_PM](https://github.com/user-attachments/assets/a6fd0888-3212-4add-9f8e-f2755597809c)
+
+![Swiggy-App-03-25-2025_06_02_PM](https://github.com/user-attachments/assets/b916b7d6-65d6-4d67-adb9-1e0e6e3d5d17)
 
